@@ -1,12 +1,10 @@
 package ApiTests;
 
-import Common.Headers;
-import Common.JsonElements;
-import Common.PayLoad;
-import Common.Resources;
+import Common.*;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -27,6 +25,7 @@ public class DocumentTests {
     static String bearerToken;
     Properties prop = new Properties();
     static String suc = "SUCCESSFUL TESTS"+"\n";
+    static String fail = "FAILED TESTS"+"\n";
 
     @BeforeTest
     public void getData() throws IOException {
@@ -69,7 +68,13 @@ public class DocumentTests {
             System.out.println(suc);
         }else {
             System.out.println("HoHai");
+            fail = fail+ result.getName()+":"+result.isSuccess()+"\n";
         }
 
+    }
+
+    @AfterClass
+    public void sendemail(){
+        Email.sendemail(Email.getMyEmail(),suc+fail);
     }
 }
