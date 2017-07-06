@@ -1,0 +1,8 @@
+<suite name = "Regression">
+<test name = "NgTet">
+    <classes>
+        <class name = "ApiTests.DocumentTests"></class>
+    </classes>
+</test>
+
+</suite>
