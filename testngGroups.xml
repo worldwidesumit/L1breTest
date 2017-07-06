@@ -1,10 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name = "Regression">
-<test name = "NgTet">
+<test name = "Groups">
     <groups>
+        <define name="Docs">
+            <include name="Document"></include>
+        </define>
         <run>
-                <include name = "Document"></include>
+                <include name = "Docs"></include>
         </run>
     </groups>
     <classes>

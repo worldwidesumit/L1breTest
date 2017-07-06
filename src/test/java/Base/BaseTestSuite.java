@@ -15,21 +15,20 @@ public class BaseTestSuite  {
 
     static  Properties prop = new Properties();
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public static void setUp(){
 
         System.out.println("Base Setup");
 
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public static void tearDown(){
 
         System.out.println("Base TearDown");
 
     }
 
-    @BeforeTest
     public static Properties getData() throws IOException {
         FileInputStream fis = new FileInputStream("env.properties");
         prop.load(fis);
