@@ -2,8 +2,10 @@ package Common;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
@@ -30,9 +32,8 @@ public class Email {
                 .auth().preemptive().basic("api","key-9641868ec14fc6db528656a021989d88")
                 .multiPart("from","APITestStatusL1BRE@mg.sumplusit.com")
                 .multiPart("to", listString)
-                .multiPart("subject","L1BRE Test Status")
-                .multiPart("text",body)
-
+                .multiPart("subject","L1BRE Test Status -- "+ DateTime.now())
+                .multiPart("text",body).log().all()
                 .when().post("/mg.sumplusit.com/messages")
                 .then().log().all().assertThat().statusCode(200).extract().response();
     }
