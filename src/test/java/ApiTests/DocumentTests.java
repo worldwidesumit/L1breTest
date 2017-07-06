@@ -1,5 +1,6 @@
 package ApiTests;
 
+import Base.BaseTestSuite;
 import Common.*;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
@@ -20,22 +21,17 @@ import static com.jayway.restassured.RestAssured.given;
 /**
  * Created by Chetna on 7/5/2017.
  */
-public class DocumentTests {
+public class DocumentTests extends BaseTestSuite{
 
     static String bearerToken;
-    Properties prop = new Properties();
     static String suc = "SUCCESSFUL TESTS"+"\n";
     static String fail = "FAILED TESTS"+"\n";
 
-    @BeforeTest
-    public void getData() throws IOException {
-        FileInputStream fis = new FileInputStream("env.properties");
-        prop.load(fis);
-    }
 
-    @Test(priority = 1)
-    public void webUserLogin(){
-        RestAssured.baseURI = prop.getProperty("Host");
+
+    @Test(priority = 1,groups = "Document")
+    public void webUserLogin() throws IOException {
+        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserLoginBody())
@@ -47,10 +43,10 @@ public class DocumentTests {
 
     }
 
-    @Test(priority = 2)
-    public void uploadDocument() throws FileNotFoundException {
+    @Test(priority = 2,groups = "Document")
+    public void uploadDocument() throws IOException {
 
-        RestAssured.baseURI = prop.getProperty("Host");
+        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = given()
                 .multiPart("document",new File("C:\\Dell\\Drivers\\J5PR2\\Version.txt"))
                 .and().header("Authorization","Bearer "+bearerToken)

@@ -2,6 +2,11 @@
 
 <suite name = "Regression">
 <test name = "NgTet">
+    <groups>
+        <run>
+                <include name = "Document"></include>
+        </run>
+    </groups>
     <classes>
         <class name = "ApiTests.DocumentTests"></class>
     </classes>
