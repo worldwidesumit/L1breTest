@@ -16,7 +16,7 @@ import static com.jayway.restassured.RestAssured.given;
 /**
  * Created by Chetna on 7/6/2017.
  */
-public class PassengerTests {
+public class PassengerTests extends BaseTestSuite{
 
     static String bearerToken;
 
@@ -32,7 +32,7 @@ public class PassengerTests {
         bearerToken = JsonElements.getBearerToken(res);
 
     }
-    @Test(priority = 2)
+    //@Test(priority = 2)
     public void passenger2ChangePassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = given()

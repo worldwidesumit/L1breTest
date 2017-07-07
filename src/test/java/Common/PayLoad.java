@@ -10,10 +10,10 @@ public class PayLoad {
     private static String Passenger2UserName = "runscopePassengerPrd02@mailinator.com";
     private static String Passenger2Password = "password";
     private static String Passenger2OldPassword = "password";
-    private static String Passenger2NewPassword = "oracle123";
+    private static String Passenger2NewPassword = "admprd02";
     private static String DblQuote = "\"";
 
-    public static String getWebUserLoginBody(){
+        public static String getWebUserLoginBody(){
         String s = "{\"username\":"+"\""+AdminUserName+"\""+","+"\"password\":"+"\""+AdminPassword+"\""+"}";
         return s;
     }
@@ -24,7 +24,7 @@ public class PayLoad {
     }
 
     public static String getPassenger2ChangePassword(){
-        String s = "{\"oldPassword\":"+"\""+Passenger2OldPassword+"\""+","+"\"newPassword\":"+"\""+Passenger2NewPassword+"\""+"}";
+        String s = "{\"oldPassword\":"+"\""+Passenger2NewPassword+"\""+","+"\"newPassword\":"+"\""+Passenger2OldPassword+"\""+"}";
         return s;
     }
 }
