@@ -10,14 +10,14 @@ import java.io.IOException;
 public class PayLoad extends BaseTestSuite{
 
         public static String getWebUserLoginBody() throws IOException {
-        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("AdminUserName")
-                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("AdminPassword")+"\""+"}";
+        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN_USERNAME")
+                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN_PASSWORD")+"\""+"}";
         return s;
     }
 
     public static String getPassenger2LoginBody() throws IOException {
-        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("Passenger2UserName")
-                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("Passenger2Password")+"\""+"}";
+        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("PASSENGER2_USERNAME")
+                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("PASSENGER2_PASSWORD")+"\""+"}";
         return s;
     }
 
