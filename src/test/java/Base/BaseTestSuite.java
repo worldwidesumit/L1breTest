@@ -32,6 +32,15 @@ public class BaseTestSuite  {
     public static Properties getData() throws IOException {
         FileInputStream fis = new FileInputStream("env.properties");
         prop.load(fis);
+        String env = prop.getProperty("Environment");
+        if (env.equals("TEST")){
+            FileInputStream nfis = new FileInputStream("testenv.properties");
+            prop.load(nfis);
+        }else
+        {
+            FileInputStream nfis = new FileInputStream("prodenv.properties");
+            prop.load(nfis);
+        }
         return prop;
     }
 }

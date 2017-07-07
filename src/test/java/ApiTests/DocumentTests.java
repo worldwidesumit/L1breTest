@@ -7,14 +7,9 @@ import com.jayway.restassured.response.Response;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
 
 import static com.jayway.restassured.RestAssured.given;
 
@@ -34,7 +29,7 @@ public class DocumentTests extends BaseTestSuite{
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
-                .body(PayLoad.getWebUserLoginBody())
+                .body(PayLoad.getWebUserLoginBody()).log().all()
                 .when().post(Resources.getWebUserLogin())
                 .then().log().all().and().assertThat().statusCode(200).extract().response()
                 ;

@@ -8,6 +8,5 @@ import java.util.List;
  */
 public class Config {
 
-    static List<String> emailString = new ArrayList<String>();
 
 }
