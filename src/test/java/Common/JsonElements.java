@@ -9,9 +9,17 @@ import com.jayway.restassured.response.Response;
 public class JsonElements {
 
     static String AccessTokenPath = "result.loginToken.access_token";
+    static String PassengerIdPath = "result.userInfo.passengerId";
 
-    public static String getBearerToken(Response res){
+    public static String getToken(Response res){
         JsonPath js = new JsonPath(res.asString());
         return js.get(AccessTokenPath);
     }
+
+    public static String getPassengerId(Response res){
+        JsonPath js = new JsonPath(res.asString());
+        return js.get(PassengerIdPath);
+    }
+
+
 }

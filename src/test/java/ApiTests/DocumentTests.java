@@ -30,10 +30,10 @@ public class DocumentTests extends BaseTestSuite{
         Response res = given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserLoginBody()).log().all()
-                .when().post(Resources.getWebUserLogin())
+                .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_LOGIN"))
                 .then().log().all().and().assertThat().statusCode(200).extract().response()
                 ;
-        bearerToken = JsonElements.getBearerToken(res);
+        bearerToken = JsonElements.getToken(res);
         System.out.println(bearerToken);
 
     }
@@ -47,7 +47,7 @@ public class DocumentTests extends BaseTestSuite{
                 .and().header("Authorization","Bearer "+bearerToken)
                 .and().param("ownerId","017050f1-d4fc-4dc1-b709-fdc832fcc7b0")
                 .and().log().all()
-                .when().post(Resources.getDocumentupload()).then()
+                .when().post(BaseTestSuite.getData().getProperty("URL_DOCUMENT_DOCUMENT")).then()
                 .log().all().and().assertThat().statusCode(200).extract().response();
 
     }

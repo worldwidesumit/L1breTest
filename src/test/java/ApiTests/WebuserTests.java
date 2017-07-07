@@ -27,10 +27,10 @@ public class WebuserTests extends BaseTestSuite{
         Response res = given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserLoginBody()).log().all()
-                .when().post(Resources.getWebUserLogin())
+                .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_LOGIN"))
                 .then().log().all().and().assertThat().statusCode(200).extract().response()
                 ;
-        bearerToken = JsonElements.getBearerToken(res);
+        bearerToken = JsonElements.getToken(res);
         System.out.println(bearerToken);
 
     }
