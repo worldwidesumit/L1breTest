@@ -10,6 +10,7 @@ public class JsonElements {
 
     static String AccessTokenPath = "result.loginToken.access_token";
     static String PassengerIdPath = "result.userInfo.passengerId";
+    static String DocumentIdPath = "result.documentId";
 
     public static String getToken(Response res){
         JsonPath js = new JsonPath(res.asString());
@@ -19,6 +20,11 @@ public class JsonElements {
     public static String getPassengerId(Response res){
         JsonPath js = new JsonPath(res.asString());
         return js.get(PassengerIdPath);
+    }
+
+    public static String getDocumentId(Response res){
+        JsonPath js = new JsonPath(res.asString());
+        return js.get(DocumentIdPath);
     }
 
 

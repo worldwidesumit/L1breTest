@@ -18,14 +18,20 @@ import static com.jayway.restassured.RestAssured.given;
  */
 public class DocumentTests extends BaseTestSuite{
 
-    static String bearerToken;
+    static String ADMINTOKEN;
+    static String DOCUMENTID;
     static String suc = "SUCCESSFUL TESTS"+"\n";
     static String fail = "FAILED TESTS"+"\n";
+
+    public static String getDocumentId(){
+        String s = DOCUMENTID;
+        return  s;
+    }
 
 
 
     @Test(priority = 1,groups = "Document")
-    public void webUserLogin() throws IOException {
+    public void documentWebUserLogin() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -33,24 +39,63 @@ public class DocumentTests extends BaseTestSuite{
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_LOGIN"))
                 .then().log().all().and().assertThat().statusCode(200).extract().response()
                 ;
-        bearerToken = JsonElements.getToken(res);
-        System.out.println(bearerToken);
+        ADMINTOKEN = JsonElements.getToken(res);
 
     }
 
     @Test(priority = 2,groups = "Document")
-    public void uploadDocument() throws IOException {
-
+    public void documentUploadDocument() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = given()
-                .multiPart("document",new File("C:\\Dell\\Drivers\\J5PR2\\Version.txt"))
-                .and().header("Authorization","Bearer "+bearerToken)
-                .and().param("ownerId","017050f1-d4fc-4dc1-b709-fdc832fcc7b0")
+                .multiPart("document",new File(BaseTestSuite.getData().getProperty("UPLOAD_FILEPATH")))
+                .and().header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
+                .and().param("ownerId",BaseTestSuite.getData().getProperty("OWNERID"))
+                .and().param("documentType",BaseTestSuite.getData().getProperty("DOCUMENTTYPE"))
                 .and().log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_DOCUMENT_DOCUMENT")).then()
                 .log().all().and().assertThat().statusCode(200).extract().response();
+        DOCUMENTID = JsonElements.getDocumentId(res);
 
     }
+
+    @Test(priority = 3)
+    public void documentListDocuments() throws IOException {
+
+        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
+        Response res = given()
+                .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
+                .and().param("ownerId",BaseTestSuite.getData().getProperty("OWNERID"))
+                .and().log().all()
+                .when().get(BaseTestSuite.getData().getProperty("URL_DOCUMENT_LIST")).then()
+                .log().all().assertThat().statusCode(200).extract().response();
+    }
+
+    @Test(priority = 4)
+    public void documentRenameDocuments() throws IOException {
+
+        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
+        Response res = given()
+                .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
+                .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
+                .body(PayLoad.getDocumentRenameBody())
+                .and().log().all()
+                .when().put(BaseTestSuite.getData().getProperty("URL_DOCUMENT_DOCUMENT")
+                +"/"+DOCUMENTID+BaseTestSuite.getData().getProperty("URL_DOCUMENT_RENAME"))
+                .then().log().all().assertThat().statusCode(200).extract().response();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @AfterMethod
     public void getResult(ITestResult result){

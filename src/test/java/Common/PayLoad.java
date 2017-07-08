@@ -1,5 +1,6 @@
 package Common;
 
+import ApiTests.DocumentTests;
 import Base.BaseTestSuite;
 
 import java.io.IOException;
@@ -61,6 +62,12 @@ public class PayLoad extends BaseTestSuite{
     public static String getPassengerRefreshToken() throws IOException {
         String s = "{\"refresh_token\":"+"\""+BaseTestSuite.getData().getProperty("PASSENGER2_REFRESH_TOKEN")
                 +"\""+"}";
+        return s;
+    }
+
+    public static String getDocumentRenameBody() throws IOException {
+        String s = "{\"fileName\":"+"\""+BaseTestSuite.getData().getProperty("NEWDOCUMENTNAME")
+                +"\""+","+"\"documentId\":"+"\""+ DocumentTests.getDocumentId()+"\""+"}";
         return s;
     }
 
