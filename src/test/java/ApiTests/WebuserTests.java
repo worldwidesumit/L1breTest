@@ -1,7 +1,6 @@
 package ApiTests;
 import Base.BaseTestSuite;
 import Common.*;
-import Common.PayLoad;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import org.testng.ITestResult;
