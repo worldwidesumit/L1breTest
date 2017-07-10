@@ -77,5 +77,66 @@ public class PayLoad extends BaseTestSuite{
         return s;
     }
 
+    public static String getWebUserForgotPasswordEmailBody  () throws IOException {
+        String s = "{\"email\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN3_EMAIL")
+                +"\""+"}";
+        return s;
+    }
+
+    public static String getWebUserForgotPasswordUnameBody  () throws IOException {
+        String s = "{\"email\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN3_USERNAME")
+                +"\""+"}";
+        return s;
+    }
+
+    public static String getWebUserForgotPasswordFakeBody  () throws IOException {
+        String s = "{\"email\":"+"\""+"RandomAndFake"
+                +"\""+"}";
+        return s;
+    }
+
+    public static String getWebuserUpdateBody() throws IOException {
+        String s = "{\"firstName\":"+"\""+BaseTestSuite.getData().getProperty("TEMP_FIRST_NAME")
+                +"\""+","+"\"lastName\":"+"\""+ BaseTestSuite.getData().getProperty("TEMP_LAST_NAME")+"\""+"}";
+        return s;
+    }
+
+    public static String getWebUserUpdateDuplicateEmail  () throws IOException {
+        String s = "{\"email\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN2_EMAIL")
+                +"\""+"}";
+        return s;
+    }
+
+    public static String getWebuserUpdatePhoneBody() throws IOException {
+        String s = "{\"countryCode\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN2_COUNTRYCODE")
+                +"\""+","+"\"phoneNumber\":"+"\""+ BaseTestSuite.getData().getProperty("ADMIN2_PHONENUMBER")+"\""+"}";
+        return s;
+    }
+
+    public static String getWebUserAdmin2LoginBody() throws IOException {
+        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN2_USERNAME")
+                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN2_PASSWORD")+"\""+"}";
+        return s;
+    }
+
+    public static String getWebusesrChangePasswordBody() throws IOException {
+        String s = "{\"oldPassword\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN_PASSWORD")
+                +"\""+","+"\"newPassword\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN2_PASSWORD")+"\""+"}";
+        return s;
+    }
+
+    public static String getWebUserAdminLoginNewPasswordBody() throws IOException {
+        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN_USERNAME")
+                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN2_PASSWORD")+"\""+"}";
+        return s;
+    }
+
+    public static String getWebusesrRevertPasswordBody() throws IOException {
+        String s = "{\"oldPassword\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN2_PASSWORD")
+                +"\""+","+"\"newPassword\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN_PASSWORD")+"\""+"}";
+        return s;
+    }
+
+
 
 }
