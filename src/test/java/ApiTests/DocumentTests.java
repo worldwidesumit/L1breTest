@@ -84,17 +84,56 @@ public class DocumentTests extends BaseTestSuite{
                 .then().log().all().assertThat().statusCode(200).extract().response();
     }
 
+    @Test(priority = 5)
+    public void documentDownloadDocuments() throws IOException {
 
+        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
+        Response res = given()
+                .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
+                .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
+                .and().log().all()
+                .when().get(BaseTestSuite.getData().getProperty("URL_DOCUMENT_DOCUMENT")
+                        +"/"+DOCUMENTID+BaseTestSuite.getData().getProperty("URL_DOCUMENT_DOWNLOAD"))
+                .then().log().all().assertThat().statusCode(200).extract().response();
+    }
+    @Test(priority = 6)
+    public void documentListTaxiDocumentsForUploadedDoc() throws IOException {
 
+        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
+        Response res = given()
+                .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
+                .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
+                .and().queryParam("ownerId",BaseTestSuite.getData().getProperty("TAXI_OWNER_ID"))
+                .and().log().all()
+                .when().get(BaseTestSuite.getData().getProperty("URL_DOCUMENT_LIST"))
+                .then().log().all().assertThat().statusCode(200).extract().response();
+    }
+    @Test(priority = 8)
+    public void documentDeleteAlreadyDeletedDocument() throws IOException {
 
+        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
+        Response res = given()
+                .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
+                .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
+                .and().body(PayLoad.getDocumentAlreadyDeletedBody())
+                .and().log().all()
+                .when().delete(BaseTestSuite.getData().getProperty("URL_DOCUMENT_DOCUMENT") + "/"
+                +BaseTestSuite.getData().getProperty("ALREAD_DELETED_FILE_ID"))
+                .then().log().all().assertThat().statusCode(404).extract().response();
+    }
 
+    @Test(priority = 9)
+    public void documentListTaxiDocumentsForNoUploadedDoc() throws IOException {
 
-
-
-
-
-
-
+        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
+        Response res = given()
+                .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
+                .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
+                .and().queryParam("ownerId",BaseTestSuite.getData().getProperty("TAXI_OWNER_ID_NO_DOCUMENT"))
+                .and().log().all()
+                .when().get(BaseTestSuite.getData().getProperty("URL_DOCUMENT_LIST"))
+                .then().log().all().assertThat().statusCode(200).extract().response();
+    }
 
 
     @AfterMethod

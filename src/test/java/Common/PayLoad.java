@@ -71,5 +71,11 @@ public class PayLoad extends BaseTestSuite{
         return s;
     }
 
+    public static String getDocumentAlreadyDeletedBody  () throws IOException {
+        String s = "{\"documentId\":"+"\""+BaseTestSuite.getData().getProperty("ALREAD_DELETED_FILE_ID")
+                +"\""+"}";
+        return s;
+    }
+
 
 }
