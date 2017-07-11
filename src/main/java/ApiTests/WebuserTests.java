@@ -26,7 +26,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 1)
     public void webUserLogin() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserLoginBody()).log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_LOGIN"))
@@ -40,7 +40,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 2)
     public void webUserForgotPasswordEmail() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserForgotPasswordEmailBody()).log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_FORGOT_PASSWORD"))
@@ -50,7 +50,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 3)
     public void webUserForgotPasswordUName() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserForgotPasswordUnameBody()).log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_FORGOT_PASSWORD"))
@@ -61,7 +61,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 4)
     public void webUserForgotPasswordFake() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserForgotPasswordFakeBody()).log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_FORGOT_PASSWORD"))
@@ -72,7 +72,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 5)
     public void webUserSearchAdminEmail() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken))
                 .queryParam("term",BaseTestSuite.getData().getProperty("ADMIN_EMAIL")).log().all()
@@ -84,7 +84,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 6)
     public void webUserGetOverview() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken))
                 .log().all()
@@ -95,7 +95,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 6)
     public void webUserListRolesAdmin() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .queryParam("rows",10).and()
@@ -110,7 +110,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 7)
     public void webUserListRolesDispatcher() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .queryParam("rows",10).and()
@@ -125,7 +125,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 8)
     public void webUserListRolesCommissioner() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .queryParam("rows",10).and()
@@ -140,7 +140,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 9)
     public void webUserListRolesEmergency() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .queryParam("rows",10).and()
@@ -155,7 +155,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 10)
     public void webUserGetUserById() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .log().all()
@@ -167,7 +167,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 10)
     public void webUserUpdateWebuser() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .body(PayLoad.getWebuserUpdateBody())
@@ -180,7 +180,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 11)
     public void webUserUpdateWebuserDuplicateEmail() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .body(PayLoad.getWebUserUpdateDuplicateEmail())
@@ -192,7 +192,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 12)
     public void webUserUpdateWebuserDuplicatePhone() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .body(PayLoad.getWebuserUpdatePhoneBody())
@@ -205,7 +205,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 13)
     public void webUserSuspendById() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .log().all()
@@ -218,7 +218,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 14)
     public void webUserUnsuspend() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .log().all()
@@ -232,7 +232,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 15)
     public void webUserLoginAdmin2() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserAdmin2LoginBody()).log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_LOGIN"))
@@ -245,7 +245,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 16)
     public void webUserAdminChangePassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .body(PayLoad.getWebusesrChangePasswordBody())
@@ -258,7 +258,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 17)
     public void webUserAdminLogout() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .log().all()
@@ -270,7 +270,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 18)
     public void webUserLoginOldPassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserLoginBody()).log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_LOGIN"))
@@ -282,7 +282,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 19)
     public void webUserLoginNewPassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserAdminLoginNewPasswordBody()).log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_LOGIN"))
@@ -295,7 +295,7 @@ public class WebuserTests extends BaseTestSuite{
     @Test(priority = 20)
     public void webUserAdminRevertPassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(),Headers.getHeaderAuthorizationValue(bearerToken)).and()
                 .body(PayLoad.getWebusesrRevertPasswordBody())

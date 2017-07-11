@@ -28,7 +28,7 @@ public class Email {
     public static void sendemail(List<String> elist,String body){
         String listString = String.join(", ", elist);
         RestAssured.baseURI = "https://api.mailgun.net/v3";
-        Response res = given()
+        Response res = RestAssured.given()
                 .auth().preemptive().basic("api","key-9641868ec14fc6db528656a021989d88")
                 .multiPart("from","APITestStatusL1BRE@mg.sumplusit.com")
                 .multiPart("to", listString)

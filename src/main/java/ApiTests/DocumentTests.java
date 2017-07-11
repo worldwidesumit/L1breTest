@@ -33,7 +33,7 @@ public class DocumentTests extends BaseTestSuite{
     @Test(priority = 1,groups = "Document")
     public void documentWebUserLogin() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getWebUserLoginBody()).log().all()
                 .when().post(BaseTestSuite.getData().getProperty("URL_WEBUSER_LOGIN"))
@@ -46,7 +46,7 @@ public class DocumentTests extends BaseTestSuite{
     @Test(priority = 2,groups = "Document")
     public void documentUploadDocument() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .multiPart("document",new File(BaseTestSuite.getData().getProperty("UPLOAD_FILEPATH")))
                 .and().header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
                 .and().param("ownerId",BaseTestSuite.getData().getProperty("OWNERID"))
@@ -62,7 +62,7 @@ public class DocumentTests extends BaseTestSuite{
     public void documentListDocuments() throws IOException {
 
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
                 .and().param("ownerId",BaseTestSuite.getData().getProperty("OWNERID"))
                 .and().log().all()
@@ -74,7 +74,7 @@ public class DocumentTests extends BaseTestSuite{
     public void documentRenameDocuments() throws IOException {
 
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
                 .body(PayLoad.getDocumentRenameBody())
@@ -88,7 +88,7 @@ public class DocumentTests extends BaseTestSuite{
     public void documentDownloadDocuments() throws IOException {
 
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
                 .and().log().all()
@@ -100,7 +100,7 @@ public class DocumentTests extends BaseTestSuite{
     public void documentListTaxiDocumentsForUploadedDoc() throws IOException {
 
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
                 .and().queryParam("ownerId",BaseTestSuite.getData().getProperty("TAXI_OWNER_ID"))
@@ -112,7 +112,7 @@ public class DocumentTests extends BaseTestSuite{
     public void documentDeleteAlreadyDeletedDocument() throws IOException {
 
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
                 .and().body(PayLoad.getDocumentAlreadyDeletedBody())
@@ -126,7 +126,7 @@ public class DocumentTests extends BaseTestSuite{
     public void documentListTaxiDocumentsForNoUploadedDoc() throws IOException {
 
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(ADMINTOKEN))
                 .and().queryParam("ownerId",BaseTestSuite.getData().getProperty("TAXI_OWNER_ID_NO_DOCUMENT"))

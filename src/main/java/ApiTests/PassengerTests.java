@@ -34,7 +34,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 1)
     public void passenger1Login() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getPassenger1LoginBody())
                 .when().post(BaseTestSuite.getData().getProperty("URL_PASSENGER_LOGIN"))
@@ -46,7 +46,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 2)
     public void passenger1GetSelfInfoPassengerId() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(PASSENGER1_TOKEN))
                 .log().all()
@@ -58,7 +58,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 3)
     public void passenger1GetSelfInfoPassengerUname() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(PASSENGER1_TOKEN))
                 .log().all()
@@ -70,7 +70,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 4)
     public void passenger1ChangeLocale() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(PASSENGER1_TOKEN))
                 .and().body(PayLoad.getPassengerChangeLocale())
@@ -83,7 +83,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 5)
     public void passenger1LogsOut() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(PASSENGER1_TOKEN))
                 .log().all()
@@ -94,7 +94,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 6)
     public void passenger2Login() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getPassenger2LoginBody())
                 .when().post(BaseTestSuite.getData().getProperty("URL_PASSENGER_LOGIN"))
@@ -106,7 +106,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 7)
     public void passenger2ChangePassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(PASSENGER2_TOKEN))
                 .and().body(PayLoad.getPassengerChangePasswordBody())
@@ -118,7 +118,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 8)
     public void passenger2LogsOut() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(PASSENGER2_TOKEN))
                 .log().all()
@@ -129,7 +129,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 9)
     public void passenger2LoginOldPassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getPassenger2LoginBody())
                 .when().post(BaseTestSuite.getData().getProperty("URL_PASSENGER_LOGIN"))
@@ -139,7 +139,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 10)
     public void passenger2LoginNewPassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getPassenger2NewPassLoginBody())
                 .when().post(BaseTestSuite.getData().getProperty("URL_PASSENGER_LOGIN"))
@@ -151,7 +151,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 11)
     public void passenger2RevertPassword() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(PASSENGER2_TOKEN))
                 .and().body(PayLoad.getPassengerRevertPasswordBody())
@@ -164,7 +164,7 @@ public class PassengerTests extends BaseTestSuite {
     @Test(priority = 12)
     public void passenger2GenerateTempCode() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .body(PayLoad.getPassengerGenerateTempDataBody())
                 .when().post(BaseTestSuite.getData().getProperty("URL_PASSENGER_GENERATE_TEMP_CODE"))
@@ -176,7 +176,7 @@ public class PassengerTests extends BaseTestSuite {
     public void passengerRefreshToken() throws IOException {
         passenger2Login();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = given()
+        Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
                 .header(Headers.getHeaderAuthorization(), Headers.getHeaderAuthorizationValue(PASSENGER2_TOKEN)).and()
                 .body(PayLoad.getPassengerRefreshToken())
