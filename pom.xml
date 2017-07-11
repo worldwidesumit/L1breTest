@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.libre</groupId>
     <artifactId>libreTest</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -29,6 +30,7 @@
     </properties>
 
     <build>
+        <pluginManagement>
         <plugins>
 
             <!--<plugin>
@@ -51,13 +53,19 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <arguments>
+                        <argument>org.codehaus.mojo</argument>
+                        <!-- automatically creates the classpath using all project dependencies,
+                             also adding the project build directory -->
+                        <classpath/>
+                        <argument>Base.TestRunner</argument>
+                    </arguments>
                     <includePluginDependencies>true</includePluginDependencies>
                     <mainClass>Base.TestRunner</mainClass>
                 </configuration>
             </plugin>
 
             <plugin>
-
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.0.0</version>
@@ -139,9 +147,16 @@
                 </executions>
             </plugin>-->
         </plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.6.0</version>
+            <type>maven-plugin</type>
+        </dependency>
         <dependency>
             <groupId>com.libre</groupId>
             <artifactId>LibreTest</artifactId>
