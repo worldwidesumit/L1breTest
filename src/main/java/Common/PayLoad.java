@@ -4,6 +4,8 @@ import ApiTests.DocumentTests;
 import Base.BaseTestSuite;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Created by Chetna on 7/5/2017.
@@ -136,6 +138,201 @@ public class PayLoad extends BaseTestSuite{
                 +"\""+","+"\"newPassword\":"+"\""+BaseTestSuite.getData().getProperty("ADMIN_PASSWORD")+"\""+"}";
         return s;
     }
+
+    public static String getDriverEmailbody  () throws IOException {
+        String s = "{\n" +
+                "  \"MODEL_TYPE\": \"driver\",\n" +
+                "  \"username\": \"\",\n" +
+                "  \"driverId\": \"\",\n" +
+                "  \"name\": \"\",\n" +
+                "  \"firstName\": \"Rodrigo\",\n" +
+                "  \"lastName\": \"Pardo Fernandez\",\n" +
+                "  \"shortName\": \"\",\n" +
+                "  \"email\": \""+BaseTestSuite.getData().getProperty("DRIVER1_EMAIL")+"\",\n" +
+                "  \"photo\": \"\",\n" +
+                "  \"locale\": \"es_MX\",\n" +
+                "  \"currentTaxiId\": \"\",\n" +
+                "  \"currentTaxiInfo\": \"\",\n" +
+                "  \"currentShiftId\": \"\",\n" +
+                "  \"lastLoginTime\": null,\n" +
+                "  \"lastLogoutTime\": null,\n" +
+                "  \"rating\": 0,\n" +
+                "  \"ratingsDoc\": {\n" +
+                "    \n" +
+                "  },\n" +
+                "  \"forceChangePassword\": null,\n" +
+                "  \"suspended\": null,\n" +
+                "  \"countryCode\": \"+1\",\n" +
+                "  \"phoneNumber\": \"123{{DRIVER1_PHONENUMBER}}\",\n" +
+                "  \"phone\": \"\",\n" +
+                "  \"rfc\": \"\",\n" +
+                "  \"curp\": \"528983DC6B644027BF\",\n" +
+                "  \"licenseId\": \"TEST-DRIVER01\",\n" +
+                "  \"licenceExpiration\": 1525910400000,\n" +
+                "  \"licenceType\": \"\",\n" +
+                "  \"accessCardId\": \"\",\n" +
+                "  \"dob\": 633887515407,\n" +
+                "  \"cardCode\": \"\",\n" +
+                "  \"licensePlate\": \"\",\n" +
+                "  \"emergencyContacts\": \"\",\n" +
+                "  \"gender\": \"m\",\n" +
+                "  \"bloodType\": \"AP\",\n" +
+                "  \"mobileCountryCode\": \"\",\n" +
+                "  \"mobilePhoneNumber\": \"\",\n" +
+                "  \"vehicleOwner\": \"\",\n" +
+                "  \"licenceOwner\": \"\",\n" +
+                "  \"medicalInsurance\": \"\",\n" +
+                "  \"medInsuranceCompany\": \"\",\n" +
+                "  \"medExpirationDate\": null,\n" +
+                "  \"tarjetonId\": \"WM409801\",\n" +
+                "  \"tarjetonType\": \"PP\",\n" +
+                "  \"tarjetonExpDate\": 1738425171322,\n" +
+                "  \"streetAddress\": \"1115 Laidlaw Dr\",\n" +
+                "  \"intNum\": \"\",\n" +
+                "  \"extNum\": \"11\",\n" +
+                "  \"community\": \"Milton\",\n" +
+                "  \"municipality\": \"Halton\",\n" +
+                "  \"zipcode\": \"90210\",\n" +
+                "  \"state\": \"ON\",\n" +
+                "  \"_yz_rk\": \"\",\n" +
+                "  \"disableExpiryDate\": true,\n" +
+                "  \"loading\": false,\n" +
+                "  \"noResponse\": false,\n" +
+                "  \"notFound\": false,\n" +
+                "  \"readonly\": true,\n" +
+                "  \"whiteout\": false,\n" +
+                "  \"alreadyInDB\": false,\n" +
+                "  \"licenceExpiration_valid\": true,\n" +
+                "  \"dob_valid\": true,\n" +
+                "  \"tarjetonExpDate_valid\": true,\n" +
+                "  \"medExpirationDate_valid\": true,\n" +
+                "  \"goodToGo\": true\n" +
+                "}";
+        return s;
+    }
+
+    public static String getDriverNewPhoneEmail() throws IOException {
+        String s = "{\n" +
+                "  \"MODEL_TYPE\": \"driver\",\n" +
+                "  \"username\": \"\",\n" +
+                "  \"driverId\": \"\",\n" +
+                "  \"name\": \"\",\n" +
+                "  \"firstName\": \"Rodrigo\",\n" +
+                "  \"lastName\": \"Pardo Fernandez\",\n" +
+                "  \"shortName\": \"\",\n" +
+                "  \"email\": \"notExistingDriver@gmail.com\",\n" +
+                "  \"photo\": \"\",\n" +
+                "  \"locale\": \"es_MX\",\n" +
+                "  \"currentTaxiId\": \"\",\n" +
+                "  \"currentTaxiInfo\": \"\",\n" +
+                "  \"currentShiftId\": \"\",\n" +
+                "  \"lastLoginTime\": null,\n" +
+                "  \"lastLogoutTime\": null,\n" +
+                "  \"rating\": 0,\n" +
+                "  \"ratingsDoc\": {\n" +
+                "    \n" +
+                "  },\n" +
+                "  \"forceChangePassword\": null,\n" +
+                "  \"suspended\": null,\n" +
+                "  \"countryCode\": \"+67\",\n" +
+                "  \"phoneNumber\": \"8907654563\",\n" +
+                "  \"phone\": \"\",\n" +
+                "  \"rfc\": \"\",\n" +
+                "  \"curp\": \"528983DC6B644027BF\",\n" +
+                "  \"licenseId\": \"TEST-DRIVER01\",\n" +
+                "  \"licenceExpiration\": 1525910400000,\n" +
+                "  \"licenceType\": \"\",\n" +
+                "  \"accessCardId\": \"\",\n" +
+                "  \"dob\": 633887515407,\n" +
+                "  \"cardCode\": \"\",\n" +
+                "  \"licensePlate\": \"\",\n" +
+                "  \"emergencyContacts\": \"\",\n" +
+                "  \"gender\": \"m\",\n" +
+                "  \"bloodType\": \"AP\",\n" +
+                "  \"mobileCountryCode\": \"\",\n" +
+                "  \"mobilePhoneNumber\": \"\",\n" +
+                "  \"vehicleOwner\": \"\",\n" +
+                "  \"licenceOwner\": \"\",\n" +
+                "  \"medicalInsurance\": \"\",\n" +
+                "  \"medInsuranceCompany\": \"\",\n" +
+                "  \"medExpirationDate\": null,\n" +
+                "  \"tarjetonId\": \"WM409801\",\n" +
+                "  \"tarjetonType\": \"PP\",\n" +
+                "  \"tarjetonExpDate\": 1738425171322,\n" +
+                "  \"streetAddress\": \"1115 Laidlaw Dr\",\n" +
+                "  \"intNum\": \"\",\n" +
+                "  \"extNum\": \"11\",\n" +
+                "  \"community\": \"Milton\",\n" +
+                "  \"municipality\": \"Halton\",\n" +
+                "  \"zipcode\": \"90210\",\n" +
+                "  \"state\": \"ON\",\n" +
+                "  \"_yz_rk\": \"\",\n" +
+                "  \"disableExpiryDate\": true,\n" +
+                "  \"loading\": false,\n" +
+                "  \"noResponse\": false,\n" +
+                "  \"notFound\": false,\n" +
+                "  \"readonly\": true,\n" +
+                "  \"whiteout\": false,\n" +
+                "  \"alreadyInDB\": false,\n" +
+                "  \"licenceExpiration_valid\": true,\n" +
+                "  \"dob_valid\": true,\n" +
+                "  \"tarjetonExpDate_valid\": true,\n" +
+                "  \"medExpirationDate_valid\": true,\n" +
+                "  \"goodToGo\": true\n" +
+                "}";
+        return s;
+    }
+
+    public static Timestamp getTimeStamp(){
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        timestamp.getTime();
+        return  timestamp;
+
+    }
+
+    public static String getDriver2SuspendBody() throws IOException {
+        String s = "{\n" +"\"suspended\": \"true\"\n" +"}";
+        return s;
+    }
+
+    public static String getDriver2LoginBody() throws IOException {
+        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER2_USERNAME")
+                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER2_PASSWORD")+"\""+"}";
+        return s;
+    }
+
+    public static String getDriver2UnSuspendBody() throws IOException {
+        String s = "{\n" +"\"suspended\": \"false\"\n" +"}";
+        return s;
+    }
+
+    public static String getDriverZipCodeBody() throws IOException {
+        String s = "{\"zipcode\":"+"\""+BaseTestSuite.getData().getProperty("TEMP_ZIP_CODE")
+                +"\""+"}";
+        return s;
+    }
+    public static String getDriver1LoginBody() throws IOException {
+        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER1_USERNAME")
+                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER1_PASSWORD")+"\""+"}";
+        return s;
+    }
+    public static String getDriverReplaceEmerContactsBody() throws IOException {
+        String s = "{{\n" +
+                "\"contacts\":[],\n" +
+                "\"replace\":true\n" +
+                "}";
+        return s;
+    }
+
+    public static String getDriverShiftsTaxi1Body() throws IOException {
+        String s = "{\"taxiId\":"+"\""+BaseTestSuite.getData().getProperty("TAXI1_TAXIID")
+                +"\""+","+"\"shiftId\":"+"\""+getTimeStamp().getTime()+"\""+"}";
+        return s;
+    }
+
+
+
+
 
 
 

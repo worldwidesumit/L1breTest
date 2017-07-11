@@ -24,7 +24,7 @@ public class WebuserTests extends BaseTestSuite{
     static String fail = "FAILED TESTS"+"\n";
 
     @Test(priority = 1)
-    public void webUserLogin() throws IOException {
+    public static void webUserLogin() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
