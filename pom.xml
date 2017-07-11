@@ -53,7 +53,7 @@
                 </executions>
                 <configuration>
                     <includePluginDependencies>true</includePluginDependencies>
-                    <mainClass>TestRunner</mainClass>
+                    <mainClass>Base.TestRunner</mainClass>
                 </configuration>
             </plugin>
 
