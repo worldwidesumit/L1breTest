@@ -53,13 +53,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <arguments>
-                        <argument>org.codehaus.mojo</argument>
-                        <!-- automatically creates the classpath using all project dependencies,
-                             also adding the project build directory -->
-                        <classpath/>
-                        <argument>Base.TestRunner</argument>
-                    </arguments>
                     <includePluginDependencies>true</includePluginDependencies>
                     <mainClass>Base.TestRunner</mainClass>
                 </configuration>
