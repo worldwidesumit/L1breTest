@@ -299,39 +299,7 @@ public class DriverTests {
                 .when().post(BaseTestSuite.getData().getProperty("URL_DRIVER_LOGOUT"))
                 .then().log().all().and().assertThat().statusCode(200).extract().response();
     }
-
-    @Test(priority = 24)
-    public void driverValidateDriver3Login() throws IOException {
-        RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
-        Response res = RestAssured.given()
-                .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
-                .body(PayLoad.getDriver3LoginBody()).log().all()
-                .when().post(BaseTestSuite.getData().getProperty("URL_DRIVER_LOGIN"))
-                .then().log().all().and().assertThat().statusCode(200).extract().response();
-        driverToken = JsonElements.getToken(res);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
     @AfterMethod
     public void getResult(ITestResult result){
         if(result.getStatus() == ITestResult.SUCCESS){
