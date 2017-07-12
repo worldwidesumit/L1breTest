@@ -1,7 +1,6 @@
 package ApiTests;
 
 import Base.BaseTestSuite;
-import Common.Email;
 import Common.Headers;
 import Common.JsonElements;
 import Common.PayLoad;
@@ -13,7 +12,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 
 /**
  * Created by Chetna on 7/6/2017.
@@ -299,7 +297,7 @@ public class DriverTests {
                 .when().post(BaseTestSuite.getData().getProperty("URL_DRIVER_LOGOUT"))
                 .then().log().all().and().assertThat().statusCode(200).extract().response();
     }
-    
+
     @AfterMethod
     public void getResult(ITestResult result){
         if(result.getStatus() == ITestResult.SUCCESS){
@@ -313,8 +311,9 @@ public class DriverTests {
     }
 
     @AfterClass
-    public void sendemail(){
-        Email.sendemail(Email.getMyEmail(),suc+fail);
+    public void sendEmail(){
+
+        Base.TestRunner.setSendBodyBody(this.getClass().getSimpleName()+suc+fail);
     }
 
 }

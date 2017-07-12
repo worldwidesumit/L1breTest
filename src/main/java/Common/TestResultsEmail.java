@@ -3,6 +3,8 @@ package Common;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import org.joda.time.DateTime;
+import org.testng.TestRunner;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,26 +17,28 @@ import static com.jayway.restassured.RestAssured.given;
  *
  */
 
-public class Email {
+public class TestResultsEmail {
 
     static String myEmail = "worldwide.sumit@aol.in";
 
-    public static List<String> getMyEmail(){
+
+
+    public List<String> getEmail(){
         List<String> newEmail = new ArrayList<>();
         newEmail.add(myEmail);
         return newEmail;
     }
-
-    public static void sendemail(List<String> elist,String body){
-        String listString = String.join(", ", elist);
+    @Test(priority = 1000)
+    public void sendEmail(){
+        String listString = String.join(", ", getEmail());
         RestAssured.baseURI = "https://api.mailgun.net/v3";
         Response res = RestAssured.given()
                 .auth().preemptive().basic("api","key-9641868ec14fc6db528656a021989d88")
                 .multiPart("from","APITestStatusL1BRE@mg.sumplusit.com")
                 .multiPart("to", listString)
                 .multiPart("subject","L1BRE Test Status -- "+ DateTime.now())
-                .multiPart("text",body).log().all()
+                .multiPart("text", Base.TestRunner.getSendBody()).log().all()
                 .when().post("/mg.sumplusit.com/messages")
-                .then().log().all().assertThat().statusCode(200).extract().response();
+                .then().log().all().assertThat().statusCode(200).log().all().extract().response();
     }
 }

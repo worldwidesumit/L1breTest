@@ -1,7 +1,6 @@
 package ApiTests;
 
 import Base.BaseTestSuite;
-import Common.Email;
 import Common.Headers;
 import Common.JsonElements;
 import Common.PayLoad;
@@ -203,17 +202,6 @@ public class GeoSupplyTests {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     @AfterMethod
     public void getResult(ITestResult result){
         if(result.getStatus() == ITestResult.SUCCESS){
@@ -227,8 +215,9 @@ public class GeoSupplyTests {
     }
 
     @AfterClass
-    public void sendemail(){
-        Email.sendemail(Email.getMyEmail(),suc+fail);
+    public void sendEmail(){
+
+        Base.TestRunner.setSendBodyBody(this.getClass().getSimpleName()+suc+fail);
     }
 
 
