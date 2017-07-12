@@ -11,6 +11,8 @@ public class JsonElements {
     static String AccessTokenPath = "result.loginToken.access_token";
     static String PassengerIdPath = "result.userInfo.passengerId";
     static String DocumentIdPath = "result.documentId";
+    static String TripIdPath = "result.tripId";
+    static String ShiftIdPath = "result.shiftId";
 
     public static String getToken(Response res){
         JsonPath js = new JsonPath(res.asString());
@@ -26,6 +28,18 @@ public class JsonElements {
         JsonPath js = new JsonPath(res.asString());
         return js.get(DocumentIdPath);
     }
+
+    public static String getTripId(Response res){
+        JsonPath js = new JsonPath(res.asString());
+        return js.get(TripIdPath);
+    }
+
+    public static String getShiftId(Response res){
+        JsonPath js = new JsonPath(res.asString());
+        return js.get(ShiftIdPath);
+    }
+
+
 
 
 }

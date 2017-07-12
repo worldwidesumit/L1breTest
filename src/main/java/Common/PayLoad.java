@@ -1,6 +1,7 @@
 package Common;
 
 import ApiTests.DocumentTests;
+import ApiTests.TripManagerTests;
 import Base.BaseTestSuite;
 
 import java.io.IOException;
@@ -330,9 +331,42 @@ public class PayLoad extends BaseTestSuite{
         return s;
     }
 
-    public static String getDriver3LoginBody() throws IOException {
-        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER3_USERNAME")
-                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER3_PASSWORD")+"\""+"}";
+    public static String getTripDriver1BookTaxi1Body() throws IOException {
+        String s = "{\"taxiId\":"+"\""+BaseTestSuite.getData().getProperty("TAXI1_TAXIID")
+                +"\""+","+"\"driverId\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER1_DRIVERID")+"\""+"}";
+        return s;
+    }
+
+    public static String getTripCancelTripBody() throws IOException {
+        String s = "{\"tripId\":"+"\""+ TripManagerTests.getTRIPID()
+                +"\""+"}";
+        return s;
+    }
+
+    public static String getTripTrip2EndBody() throws IOException {
+        String s = "{\n" +
+                "\"tripCostSummary\":{\n" +
+                "\"baseFare\": 5.50,\n" +
+                "\"distance\": 4.25,\n" +
+                "\"time\": 6.50, \n" +
+                "\"wifiCost\": 3,\n" +
+                "\"total\":" +BaseTestSuite.getData().getProperty("TEMP_TOTAL_COST")+"\n" +
+                "},\n" +
+                "\"tripDistance\": 50,\n" +
+                "\"isWiFiConsumed\": true\n" +
+                "}";
+        return s;
+    }
+
+    public static String getTripDriver1RateTrip2Body() throws IOException {
+        String s = "{\"rating\":"+"\""+BaseTestSuite.getData().getProperty("TEMP_DRIVER_RATE")
+                +"\""+"}";
+        return s;
+    }
+
+    public static String getTripPassengerRatingBody() throws IOException {
+        String s = "{\"rating\":"+"\""+BaseTestSuite.getData().getProperty("TEMP_PASSENGER_TABLET_RATE")
+                +"\""+","+"\"passengerTablet\":"+"\""+true+"\""+"}";
         return s;
     }
 

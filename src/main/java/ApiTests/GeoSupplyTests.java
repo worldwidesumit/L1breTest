@@ -40,7 +40,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 2)
     public static void geoAdminGodView() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -57,7 +56,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 3)
     public static void geoGetDifferentStatusTaxiNumbersInArea() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -75,7 +73,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 4)
     public static void geoGetTotalTaxisAtGpsPoint() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -90,7 +87,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 5)
     public static void geoCheckTaxisInGeoCircle() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -106,7 +102,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 6)
     public static void geoGetEntireTaxisForStatus() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -119,7 +114,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 7)
     public static void geoGetNoOfFreeTaxis() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -133,7 +127,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 8)
     public static void geoGetNoOfOccupiedTaxis() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -147,7 +140,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 9)
     public static void geoGetNoOfEnrouteTaxis() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -161,7 +153,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 10)
     public static void geoGetNoOfDistressedTaxis() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -175,7 +166,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 11)
     public static void geoGetNoOfBreakTaxis() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -189,7 +179,6 @@ public class GeoSupplyTests {
 
     @Test(priority = 11)
     public static void geoGetNoOfOffDutyTaxis() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
