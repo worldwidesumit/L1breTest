@@ -151,6 +151,6 @@ public class DocumentTests extends BaseTestSuite{
     @AfterClass
     public void sendEmail(){
 
-        Base.TestRunner.setSendBodyBody(this.getClass().getSimpleName()+suc+fail);
+        Base.TestRunner.setSendBodyBody(this.getClass().getSimpleName()+"\n"+suc+fail);
     }
 }

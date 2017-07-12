@@ -313,7 +313,7 @@ public class DriverTests {
     @AfterClass
     public void sendEmail(){
 
-        Base.TestRunner.setSendBodyBody(this.getClass().getSimpleName()+suc+fail);
+        Base.TestRunner.setSendBodyBody(this.getClass().getSimpleName()+"\n"+suc+fail);
     }
 
 }

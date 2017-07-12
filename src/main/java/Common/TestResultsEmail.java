@@ -21,6 +21,15 @@ public class TestResultsEmail {
 
     static String myEmail = "worldwide.sumit@aol.in";
 
+    public static String getStatus(){
+        String body = Base.TestRunner.getSendBody();
+        boolean status = body.contains("false");
+        if (status == false){
+            return "PASSED---";
+        } else
+            return "FAILED---";
+    }
+
 
 
     public List<String> getEmail(){
@@ -36,7 +45,7 @@ public class TestResultsEmail {
                 .auth().preemptive().basic("api","key-9641868ec14fc6db528656a021989d88")
                 .multiPart("from","APITestStatusL1BRE@mg.sumplusit.com")
                 .multiPart("to", listString)
-                .multiPart("subject","L1BRE Test Status -- "+ DateTime.now())
+                .multiPart("subject",getStatus()+"L1BRE Test Status -- "+ DateTime.now())
                 .multiPart("text", Base.TestRunner.getSendBody()).log().all()
                 .when().post("/mg.sumplusit.com/messages")
                 .then().log().all().assertThat().statusCode(200).log().all().extract().response();

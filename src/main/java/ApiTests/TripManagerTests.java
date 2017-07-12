@@ -307,17 +307,6 @@ public class TripManagerTests {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     @AfterMethod
     public void getResult(ITestResult result){
         if(result.getStatus() == ITestResult.SUCCESS){
@@ -333,6 +322,6 @@ public class TripManagerTests {
     @AfterClass
     public void sendEmail(){
 
-        Base.TestRunner.setSendBodyBody(this.getClass().getSimpleName()+suc+fail);
+        Base.TestRunner.setSendBodyBody(this.getClass().getSimpleName()+"\n"+suc+fail);
     }
 }
