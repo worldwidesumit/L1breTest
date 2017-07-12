@@ -330,6 +330,12 @@ public class PayLoad extends BaseTestSuite{
         return s;
     }
 
+    public static String getDriver3LoginBody() throws IOException {
+        String s = "{\"username\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER3_USERNAME")
+                +"\""+","+"\"password\":"+"\""+BaseTestSuite.getData().getProperty("DRIVER3_PASSWORD")+"\""+"}";
+        return s;
+    }
+
 
 
 
