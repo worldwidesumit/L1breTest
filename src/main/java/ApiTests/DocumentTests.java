@@ -7,9 +7,11 @@ import com.jayway.restassured.response.Response;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import static com.jayway.restassured.RestAssured.given;
 
@@ -135,14 +137,19 @@ public class DocumentTests extends BaseTestSuite{
                 .then().log().all().assertThat().statusCode(200).extract().response();
     }
 
+    @BeforeMethod
+    protected void startSession(Method method) throws Exception {
 
-    @AfterMethod
+        String testName = method.getName();
+        System.out.println(testName);
+    }
+
+
+        @AfterMethod
     public void getResult(ITestResult result){
         if(result.getStatus() == ITestResult.SUCCESS){
             suc = suc+ result.getName()+":"+result.isSuccess()+"\n";
-            System.out.println(suc);
         }else {
-            System.out.println("HoHai");
             fail = fail+ result.getName()+":"+result.isSuccess()+"\n";
         }
 

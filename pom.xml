@@ -45,6 +45,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20</version>
                 <configuration>
+                    <environmentVariables>
+                        <outputDirectory>${project.build.directory}</outputDirectory>
+                    </environmentVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>testngRunner.xml</suiteXmlFile>
                     </suiteXmlFiles>
