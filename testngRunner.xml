@@ -1,9 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Regression">
-<test name = "NgTet">
+<suite name = "Regression" parallel="none">
+<test name = "LibreTests">
     <classes>
         <class name = "ApiTests.PassengerTests"></class>
+        <class name = "ApiTests.TripManagerTests"></class>
+        <class name = "ApiTests.GeoSupplyTests"></class>
+        <class name = "ApiTests.WebuserTests"></class>
+        <class name = "ApiTests.DocumentTests"></class>
+        <class name = "ApiTests.DriverTests"></class>
+        <class name = "ApiTests.DispatchTests"></class>
+        <class name = "ApiTests.NotificationTests"></class>
+        <class name = "Common.TestResultsEmail"></class>
+
     </classes>
 </test>
 
