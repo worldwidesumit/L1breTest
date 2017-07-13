@@ -20,6 +20,7 @@ import static com.jayway.restassured.RestAssured.given;
 public class TestResultsEmail {
 
     static String myEmail = "worldwide.sumit@aol.in";
+    static String slackEmail = "f9k1t3r9z0m6l7i8@10point1-dev.slack.com";
 
     public static String getStatus(){
         String body = Base.TestRunner.getSendBody();
@@ -34,7 +35,7 @@ public class TestResultsEmail {
 
     public List<String> getEmail(){
         List<String> newEmail = new ArrayList<>();
-        newEmail.add(myEmail);
+        newEmail.add(slackEmail);
         return newEmail;
     }
     @Test(priority = 1000)

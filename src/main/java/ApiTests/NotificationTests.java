@@ -149,7 +149,7 @@ public class NotificationTests extends BaseTestSuite {
         driverShiftId = JsonElements.getShiftId(res);
     }
 
-    @Test(priority = 9)
+    //@Test(priority = 9)  //"/driver/1.0.0/shift/notification/1.0.0/driver/forceShiftOut does not exist"
     public void notificationAdminForcesDriverShiftOut() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
@@ -181,7 +181,7 @@ public class NotificationTests extends BaseTestSuite {
     protected void startSession(Method method) throws Exception {
         long id = Thread.currentThread().getId();
         String testName = method.getName();
-        System.out.println(testName + "Thread is--" + id);
+        System.out.println(testName);
     }
 
 

@@ -22,7 +22,7 @@ public class DispatchTests {
     protected void startSession(Method method) throws Exception {
         long id = Thread.currentThread().getId();
         String testName = method.getName();
-        System.out.println(testName + "Thread is--" + id);
+        System.out.println(testName);
     }
 
 
