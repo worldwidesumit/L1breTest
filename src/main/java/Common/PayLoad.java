@@ -1,6 +1,7 @@
 package Common;
 
 import ApiTests.DocumentTests;
+import ApiTests.NotificationTests;
 import ApiTests.TripManagerTests;
 import Base.BaseTestSuite;
 
@@ -369,7 +370,33 @@ public class PayLoad extends BaseTestSuite{
                 +"\""+","+"\"passengerTablet\":"+"\""+true+"\""+"}";
         return s;
     }
+    public static String getNotifAdminDriverBody() throws IOException {
+        String s = "{\"driverId\":"+"\""+ NotificationTests.getDriverId()
+                +"\""+","+"\"msg\":"+"\""+BaseTestSuite.getData().getProperty("MESSAGE_FOR_ONE_DRIVER")+"\""+"}";
+        return s;
+    }
 
+    public static String getNotifAdminBroadCastDriverBody() throws IOException {
+        String s = "{\n" +
+                "\"lat\" : \"43.647861\",\n" +
+                "\"lng\": \"-79.382019\",\n" +
+                "\"msg\" : \""+BaseTestSuite.getData().getProperty("BROAD_CAST_MESSAGE")+"\",\n" +
+                "\"dist\": \"1\"\n" +
+                "}";
+        return s;
+    }
+
+    public static String getNotifDriverShiftBody() throws IOException {
+        String s = "{\"taxiId\":"+"\""+ BaseTestSuite.getData().getProperty("NOTIFICATION_TAXI_24858_ID")
+                +"\""+","+"\"shiftId\":"+"\""+getTimeStamp().getTime()+"\""+"}";
+        return s;
+    }
+
+    public static String getNotifAdminForceShiftOutBody() throws IOException {
+        String s = "{\"driverId\":"+"\""+ NotificationTests.getDriverId()
+                +"\""+","+"\"shiftId\":"+"\""+NotificationTests.getDriverShiftId()+"\""+"}";
+        return s;
+    }
 
 
 

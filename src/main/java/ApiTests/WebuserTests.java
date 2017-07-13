@@ -141,6 +141,7 @@ public class WebuserTests extends BaseTestSuite{
 
     @Test(priority = 9)
     public void webUserListRolesEmergency() throws IOException {
+        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -309,9 +310,9 @@ public class WebuserTests extends BaseTestSuite{
 
     @BeforeMethod
     protected void startSession(Method method) throws Exception {
-
+        long id = Thread.currentThread().getId();
         String testName = method.getName();
-        System.out.println(testName);
+        System.out.println(testName + "Thread is--" + id);
     }
 
 

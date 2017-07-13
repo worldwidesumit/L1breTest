@@ -188,9 +188,9 @@ public class PassengerTests extends BaseTestSuite {
 
     @BeforeMethod
     protected void startSession(Method method) throws Exception {
-
+        long id = Thread.currentThread().getId();
         String testName = method.getName();
-        System.out.println(testName);
+        System.out.println(testName + "Thread is--" + id);
     }
 
 

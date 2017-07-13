@@ -13,6 +13,7 @@ public class JsonElements {
     static String DocumentIdPath = "result.documentId";
     static String TripIdPath = "result.tripId";
     static String ShiftIdPath = "result.shiftId";
+    static String driverId = "result.userInfo.driverId";
 
     public static String getToken(Response res){
         JsonPath js = new JsonPath(res.asString());
@@ -37,6 +38,11 @@ public class JsonElements {
     public static String getShiftId(Response res){
         JsonPath js = new JsonPath(res.asString());
         return js.get(ShiftIdPath);
+    }
+
+    public static String getDriverId(Response res){
+        JsonPath js = new JsonPath(res.asString());
+        return js.get(driverId);
     }
 
 
