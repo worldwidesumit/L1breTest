@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name = "Regression" parallel="none">
+<suite name = "Regression" parallel="none" preserve-order="true">
+    <parameter name="Environment" value="Test"></parameter>
 <test name = "LibreTests">
     <classes>
         <class name = "ApiTests.PassengerTests"></class>
@@ -9,7 +10,7 @@
         <class name = "ApiTests.WebuserTests"></class>
         <class name = "ApiTests.DocumentTests"></class>
         <class name = "ApiTests.DriverTests"></class>
-        <class name = "ApiTests.DispatchTests"></class>
+        <!--<class name = "ApiTests.DispatchTests"></class>-->
         <class name = "ApiTests.NotificationTests"></class>
         <class name = "Common.TestResultsEmail"></class>
 

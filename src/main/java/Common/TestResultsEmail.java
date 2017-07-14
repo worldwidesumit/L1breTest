@@ -21,6 +21,7 @@ public class TestResultsEmail {
 
     static String myEmail = "worldwide.sumit@aol.in";
     static String slackEmail = "f9k1t3r9z0m6l7i8@10point1-dev.slack.com";
+    static String stagwellEmail = "sumit@stagwell.tech";
 
     public static String getStatus(){
         String body = Base.TestRunner.getSendBody();

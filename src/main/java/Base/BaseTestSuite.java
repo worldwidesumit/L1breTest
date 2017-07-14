@@ -1,8 +1,6 @@
 package Base;
 
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,9 +14,10 @@ public class BaseTestSuite  {
     static  Properties prop = new Properties();
 
     @BeforeSuite(alwaysRun = true)
-    public static void setUp(){
+    @Parameters("Environment")
+    public static void setUp(@Optional String Environment){
 
-        System.out.println("Base Setup");
+        System.out.println(Environment);
 
     }
 

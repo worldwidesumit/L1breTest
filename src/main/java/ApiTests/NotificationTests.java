@@ -115,6 +115,7 @@ public class NotificationTests extends BaseTestSuite {
 
     @Test(priority = 6)
     public void notificationDriverGetsToken() throws IOException {
+        notificationDriverLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
@@ -127,6 +128,7 @@ public class NotificationTests extends BaseTestSuite {
 
     @Test(priority = 7)
     public void notificationPassengerGetsToken() throws IOException {
+        notificationPassengerLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(), Headers.getHeaderValueApplicationJson()).and()
@@ -149,7 +151,7 @@ public class NotificationTests extends BaseTestSuite {
         driverShiftId = JsonElements.getShiftId(res);
     }
 
-    //@Test(priority = 9)  //"/driver/1.0.0/shift/notification/1.0.0/driver/forceShiftOut does not exist"
+    @Test(priority = 9,enabled = false)
     public void notificationAdminForcesDriverShiftOut() throws IOException {
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
@@ -162,21 +164,6 @@ public class NotificationTests extends BaseTestSuite {
                 .then().log().all().and().assertThat().statusCode(200).extract().response();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @BeforeMethod
     protected void startSession(Method method) throws Exception {
         long id = Thread.currentThread().getId();
@@ -188,7 +175,7 @@ public class NotificationTests extends BaseTestSuite {
     @AfterMethod
     public void getResult(ITestResult result){
         if(result.getStatus() == ITestResult.SUCCESS){
-            suc = suc+ result.getName()+":"+result.isSuccess()+"\n";
+            suc = suc+ result.getName()+"\n";
         }else {
             fail = fail+ result.getName()+":"+result.isSuccess()+"\n";
         }

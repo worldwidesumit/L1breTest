@@ -5,6 +5,7 @@
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.11/testng-6.11-javadoc.jar!/" />
+      <root url="https://jitpack.io/com/github/cbeust/testng/6.11/javadoc//index.html" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.11/testng-6.11-sources.jar!/" />

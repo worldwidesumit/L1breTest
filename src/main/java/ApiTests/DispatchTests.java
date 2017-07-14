@@ -29,7 +29,7 @@ public class DispatchTests {
     @AfterMethod
     public void getResult(ITestResult result){
         if(result.getStatus() == ITestResult.SUCCESS){
-            suc = suc+ result.getName()+":"+result.isSuccess()+"\n";
+            suc = suc+ result.getName()+"\n";
         }else {
             fail = fail+ result.getName()+":"+result.isSuccess()+"\n";
         }
