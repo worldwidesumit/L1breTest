@@ -173,7 +173,7 @@ public class PassengerTests extends BaseTestSuite {
 
     }
 
-    //@Test(priority = 13)
+    @Test(priority = 13,enabled = false)
     public void passengerRefreshToken() throws IOException {
         passenger2Login();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
