@@ -88,7 +88,6 @@ public class EtaTests {
                 .body(JsonElements.getETANumFound(),equalTo(0))
                 .extract().response()
                 ;
-
     }
 
 
