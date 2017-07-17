@@ -25,7 +25,6 @@ public class DispatchTests {
 
 
 
-
     @BeforeMethod
     protected void startSession(Method method) throws Exception {
         long id = Thread.currentThread().getId();
