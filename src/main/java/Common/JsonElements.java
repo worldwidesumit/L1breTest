@@ -14,6 +14,8 @@ public class JsonElements {
     static String TripIdPath = "result.tripId";
     static String ShiftIdPath = "result.shiftId";
     static String driverId = "result.userInfo.driverId";
+    static String USERPROFILE_TEMP_USER_ID = "result.id";
+    static String ETANumFound = "result.taxis.numFound";
 
     public static String getToken(Response res){
         JsonPath js = new JsonPath(res.asString());
@@ -43,6 +45,15 @@ public class JsonElements {
     public static String getDriverId(Response res){
         JsonPath js = new JsonPath(res.asString());
         return js.get(driverId);
+    }
+
+    public static String getUserprofileTempUserId(Response res){
+        JsonPath js = new JsonPath(res.asString());
+        return js.get(USERPROFILE_TEMP_USER_ID);
+    }
+
+    public static String getETANumFound(){
+        return ETANumFound;
     }
 
 
