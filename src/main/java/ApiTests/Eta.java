@@ -57,7 +57,6 @@ public class Eta {
 
     @Test(priority = 3)
     public static void etaTrueEtaHaveTaxis() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
@@ -75,7 +74,6 @@ public class Eta {
 
     @Test(priority = 4)
     public static void etaTrueEtaNoTaxis() throws IOException {
-        webUserLogin();
         RestAssured.baseURI = BaseTestSuite.getData().getProperty("Host");
         Response res = RestAssured.given()
                 .header(Headers.getHeaderKeyContentType(),Headers.getHeaderValueApplicationJson()).and()
