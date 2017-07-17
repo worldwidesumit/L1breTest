@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 /**
  * Created by Sumit on 7/17/2017.
  */
-public class UserProfile {
+public class UserProfileTests {
 
     static String USERPROFILE_TEMP_USER_ID;
     static String suc = "SUCCESSFUL TESTS"+"\n";

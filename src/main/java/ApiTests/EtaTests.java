@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 /**
  * Created by Sumit on 7/17/2017.
  */
-public class Eta {
+public class EtaTests {
 
     static String bearerToken;
     static String suc = "SUCCESSFUL TESTS"+"\n";
